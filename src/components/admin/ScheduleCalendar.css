@@ -309,3 +309,39 @@
   border-radius: 0.5rem;
   z-index: 10;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .schedule-container {
+    padding: 0;
+  }
+  .schedule-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  .calendar-nav {
+    justify-content: space-between;
+  }
+  .calendar-grid {
+    flex-direction: column;
+    overflow-x: visible;
+    padding-bottom: 2rem;
+  }
+  .calendar-day-column {
+    min-width: 100%;
+  }
+  .day-content {
+    min-height: auto;
+    padding: 1rem;
+  }
+  .empty-day {
+    margin: 1rem 0;
+  }
+  .week-title {
+    font-size: 1rem;
+  }
+  .manage-actions-grid {
+    padding-bottom: 1rem;
+  }
+}
