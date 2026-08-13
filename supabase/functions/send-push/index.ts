@@ -38,11 +38,35 @@ serve(async (req) => {
       })
     }
 
+    const authHeader = req.headers.get('Authorization')
+    const webhookSecret = req.headers.get('x-webhook-secret')
+    
     // Supabase Service Role client oluştur (RLS aşmak için)
     const supabaseAdmin = createClient(
       Deno.env.get("SUPABASE_URL")!,
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
     )
+    
+    // Doğrulama kontrolü: Webhook Secret veya Geçerli Supabase JWT
+    let isAuthenticated = false;
+    
+    if (webhookSecret && Deno.env.get("WEBHOOK_SECRET") && webhookSecret === Deno.env.get("WEBHOOK_SECRET")) {
+      isAuthenticated = true; // Veritabanı cron job'larından gelen güvenli istek
+    } else if (authHeader) {
+      const token = authHeader.replace('Bearer ', '')
+      // Gelen token'ın geçerli bir kullanıcı olup olmadığını doğrula
+      const { data: { user }, error: authError } = await supabaseAdmin.auth.getUser(token)
+      if (user && !authError) {
+        isAuthenticated = true; // Uygulama içinden gelen yetkili kullanıcı
+      }
+    }
+
+    if (!isAuthenticated) {
+      return new Response(JSON.stringify({ error: "Yetkisiz erişim (Unauthorized)" }), {
+        status: 401,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
+    }
 
     let targetProfileIds: string[] = []
 

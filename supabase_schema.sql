@@ -258,7 +258,8 @@ BEGIN
         )::jsonb,
         headers := json_build_object(
           'Content-Type', 'application/json',
-          'Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxsdXNicWN5eGlpc2pwa3pzaWVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0NTQwODcsImV4cCI6MjA5MDAzMDA4N30.Gc-mj3qc4V3p4amSj-tFIdm2hc3PKTc1A9tmDQMUwQU'
+          'Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxsdXNicWN5eGlpc2pwa3pzaWVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0NTQwODcsImV4cCI6MjA5MDAzMDA4N30.Gc-mj3qc4V3p4amSj-tFIdm2hc3PKTc1A9tmDQMUwQU',
+          'x-webhook-secret', 'melike-pilates-guvenli-bildirim-anahtari'
         )::jsonb
       );
     END LOOP;
@@ -300,7 +301,8 @@ BEGIN
       )::jsonb,
       headers := json_build_object(
         'Content-Type', 'application/json',
-        'Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxsdXNicWN5eGlpc2pwa3pzaWVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0NTQwODcsImV4cCI6MjA5MDAzMDA4N30.Gc-mj3qc4V3p4amSj-tFIdm2hc3PKTc1A9tmDQMUwQU'
+        'Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxsdXNicWN5eGlpc2pwa3pzaWVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0NTQwODcsImV4cCI6MjA5MDAzMDA4N30.Gc-mj3qc4V3p4amSj-tFIdm2hc3PKTc1A9tmDQMUwQU',
+        'x-webhook-secret', 'melike-pilates-guvenli-bildirim-anahtari'
       )::jsonb
     );
   END LOOP;
@@ -330,7 +332,8 @@ BEGIN
       )::jsonb,
       headers := json_build_object(
         'Content-Type', 'application/json',
-        'Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxsdXNicWN5eGlpc2pwa3pzaWVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0NTQwODcsImV4cCI6MjA5MDAzMDA4N30.Gc-mj3qc4V3p4amSj-tFIdm2hc3PKTc1A9tmDQMUwQU'
+        'Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxsdXNicWN5eGlpc2pwa3pzaWVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0NTQwODcsImV4cCI6MjA5MDAzMDA4N30.Gc-mj3qc4V3p4amSj-tFIdm2hc3PKTc1A9tmDQMUwQU',
+        'x-webhook-secret', 'melike-pilates-guvenli-bildirim-anahtari'
       )::jsonb
     );
   END IF;
@@ -378,9 +381,12 @@ CREATE POLICY "Users can update read status" ON notifications
   );
 
 -- GÜVENLİK YAMASI: Sadece yetkili/ilgili kişiler bildirim atabilir
+-- Üyeler sadece yöneticilere (target_role = 'admin') bildirim atabilir.
+-- Admin ve Eğitmenler herkese bildirim atabilir.
 CREATE POLICY "Anyone can insert notifications" ON notifications
   FOR INSERT WITH CHECK (
-    is_admin() OR auth.uid() = profile_id OR auth.uid() IS NOT NULL
+    is_admin() OR is_trainer() OR 
+    (auth.uid() IS NOT NULL AND target_role = 'admin')
   );
 -- ===================================================================
 -- 13. RPC FUNCTIONS FOR ADMIN OPERATIONS
