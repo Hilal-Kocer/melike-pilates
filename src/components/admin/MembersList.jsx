@@ -397,7 +397,7 @@ const MembersList = () => {
             ) : (
               sortedMembers.map(member => (
                 <tr key={member.id}>
-                  <td>
+                  <td data-label="İSİM">
                     <div className="member-name-cell">
                       <div className={`member-avatar color-${(member.name.length % 5) + 1}`}>
                         {member.initials}
@@ -417,8 +417,8 @@ const MembersList = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="package-text">{member.packageText}</td>
-                  <td>
+                  <td data-label="PAKET" className="package-text">{member.packageText}</td>
+                  <td data-label="KALAN SEANS">
                     <div className="sessions-progress-wrapper">
                       <div className="progress-track">
                         <div 
@@ -431,13 +431,13 @@ const MembersList = () => {
                       </span>
                     </div>
                   </td>
-                  <td className="date-text">{member.lastPaymentDate}</td>
-                  <td>
+                  <td data-label="SON ÖDEME" className="date-text">{member.lastPaymentDate}</td>
+                  <td data-label="DURUM">
                     <span className={`status-badge ${member.statusColor}`}>
                       {member.statusText}
                     </span>
                   </td>
-                  <td className="actions-cell" style={{ position: 'relative' }}>
+                  <td data-label="İŞLEM" className="actions-cell" style={{ position: 'relative' }}>
                     <button 
                       className="action-menu-btn"
                       onClick={(e) => {

@@ -571,17 +571,58 @@
     justify-content: center;
   }
   .table-wrapper {
-    overflow-x: auto;
-    /* Ensure action dropdowns aren't entirely clipped, though horizontal scroll handles most of it */
+    background: transparent;
+    box-shadow: none;
+    /* Ensure action dropdowns aren't entirely clipped */
     padding-bottom: 80px; 
     margin-bottom: -80px;
   }
-  .members-table {
-    min-width: 800px; 
+  
+  /* Stacked Cards Layout for Table */
+  .members-table thead {
+    display: none;
   }
+  .members-table, .members-table tbody, .members-table tr, .members-table td {
+    display: block;
+    width: 100%;
+  }
+  .members-table tr {
+    margin-bottom: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    padding: 0.5rem;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .members-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid #f1f5f9;
+    text-align: right;
+  }
+  .members-table td:last-child {
+    border-bottom: none;
+  }
+  .members-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: #64748b;
+    text-transform: uppercase;
+    text-align: left;
+    margin-right: 1rem;
+  }
+  .member-name-cell, .sessions-progress-wrapper, .actions-cell {
+    justify-content: flex-end;
+  }
+  
   .pagination-footer {
     flex-direction: column;
     gap: 1rem;
     margin-top: 80px; /* Offset the padding-bottom of wrapper */
+    background: transparent;
+    border: none;
   }
 }
