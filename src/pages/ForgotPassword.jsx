@@ -33,8 +33,8 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-left" style={{ backgroundImage: `url(${bgImage})` }}>
+    <div className="auth-container" style={{ backgroundImage: `url(${bgImage})` }}>
+      <div className="auth-left">
         <div className="overlay"></div>
         <div className="quote-container">
           <p className="quote">

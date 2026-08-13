@@ -3,13 +3,13 @@
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  background-size: cover;
+  background-position: center;
 }
 
 /* Left Section */
 .login-left {
   flex: 1.1;
-  background-size: cover;
-  background-position: center;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -304,20 +304,24 @@ input:focus {
 
 @media (max-width: 1024px) {
   .login-container {
-    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
   }
   .login-left {
-    display: flex;
-    flex: 0.25;
-    min-height: 200px;
-    padding: 20px;
+    display: none;
   }
   .login-right {
-    flex: 0.75;
-    padding: 30px 20px;
-    border-radius: 24px 24px 0 0;
-    margin-top: -24px;
-    z-index: 10;
-    position: relative;
+    flex: none;
+    width: 100%;
+    max-width: 400px;
+    padding: 32px 24px;
+    border-radius: 24px;
+    margin-top: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 12px 48px rgba(0,0,0,0.2);
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
   }
 }

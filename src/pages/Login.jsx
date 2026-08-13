@@ -84,8 +84,8 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-left" style={{ backgroundImage: `url(${bgImage})` }}>
+    <div className="login-container" style={{ backgroundImage: `url(${bgImage})` }}>
+      <div className="login-left">
         <div className="overlay"></div>
 
       </div>
