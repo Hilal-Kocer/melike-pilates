@@ -303,10 +303,21 @@ input:focus {
 }
 
 @media (max-width: 1024px) {
+  .login-container {
+    flex-direction: column;
+  }
   .login-left {
-    display: none;
+    display: flex;
+    flex: 0.25;
+    min-height: 200px;
+    padding: 20px;
   }
   .login-right {
-    flex: 1;
+    flex: 0.75;
+    padding: 30px 20px;
+    border-radius: 24px 24px 0 0;
+    margin-top: -24px;
+    z-index: 10;
+    position: relative;
   }
 }

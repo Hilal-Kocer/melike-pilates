@@ -211,12 +211,22 @@ input:focus {
 }
 
 @media (max-width: 1024px) {
+  .auth-container {
+    flex-direction: column;
+  }
   .auth-left {
-    display: none;
+    display: flex;
+    flex: 0.25;
+    min-height: 200px;
+    padding: 20px;
   }
   .auth-right {
-    flex: 1;
-    padding: 24px;
+    flex: 0.75;
+    padding: 30px 24px;
+    border-radius: 24px 24px 0 0;
+    margin-top: -24px;
+    z-index: 10;
+    position: relative;
   }
   .welcome-title {
     font-size: 2rem;
