@@ -1,0 +1,155 @@
+.member-calendar-container {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  margin-bottom: 2rem;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.calendar-header h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.nav-btn {
+  background: none;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nav-btn:hover {
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.weekday-header {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-day {
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  background-color: #f8fafc;
+  color: #334155;
+  transition: all 0.2s;
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.calendar-day:hover {
+  border-color: #cbd5e1;
+}
+
+.calendar-day.empty {
+  background-color: transparent;
+  pointer-events: none;
+}
+
+.calendar-day.today {
+  border: 1px solid #10b981;
+}
+
+.day-number {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 0.25rem;
+  align-self: flex-start;
+  padding-left: 2px;
+}
+
+.calendar-day.today .day-number {
+  color: #10b981;
+}
+
+.day-lessons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.inline-lesson-item {
+  font-size: 0.7rem;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.inline-lesson-item.upcoming {
+  background-color: #d1fae5;
+  color: #065f46;
+  border-left: 3px solid #10b981;
+}
+
+.inline-lesson-item.makeup {
+  background-color: #fef3c7;
+  color: #92400e;
+  border-left: 3px solid #f59e0b;
+}
+
+.inline-lesson-item.past {
+  background-color: #f1f5f9;
+  color: #475569;
+  border-left: 3px solid #94a3b8;
+}
+
+.inline-lesson-item.cancelled {
+  background-color: #fee2e2;
+  color: #ef4444;
+  border-left: 3px solid #ef4444;
+}
+
+.inline-time {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.inline-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inline-makeup-badge {
+  font-size: 0.6rem;
+  background-color: #f59e0b;
+  color: white;
+  padding: 1px 4px;
+  border-radius: 4px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
