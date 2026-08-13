@@ -324,16 +324,30 @@
     justify-content: space-between;
   }
   .calendar-grid {
-    flex-direction: column;
-    overflow-x: visible;
-    padding-bottom: 2rem;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 1rem;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    /* Hide scrollbar for a cleaner look */
+    scrollbar-width: none;
+  }
+  .calendar-grid::-webkit-scrollbar {
+    display: none;
   }
   .calendar-day-column {
-    min-width: 100%;
+    min-width: 85vw; /* Show a peek of the next day */
+    scroll-snap-align: center;
+    border-radius: 1.25rem;
+    margin-left: 1rem;
+  }
+  .calendar-day-column:last-child {
+    margin-right: 1rem;
   }
   .day-content {
     min-height: auto;
-    padding: 1rem;
+    padding: 1.25rem;
   }
   .empty-day {
     margin: 1rem 0;
