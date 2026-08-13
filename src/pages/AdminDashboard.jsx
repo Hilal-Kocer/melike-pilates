@@ -141,7 +141,7 @@ const AdminDashboard = () => {
       </aside>
 
       {/* Main Content */}
-      <main className="main-content" style={{ padding: activeTab === 'members' ? '0' : undefined }}>
+      <main className={`main-content ${activeTab === 'members' ? 'no-padding' : ''}`}>
         {activeTab === 'dashboard' && <DashboardOverview setActiveTab={setActiveTab} />}
         {activeTab === 'members' && <MembersList />}
         {activeTab === 'schedule' && <ScheduleCalendar />}

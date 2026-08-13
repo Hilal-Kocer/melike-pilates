@@ -132,11 +132,14 @@
   cursor: pointer;
 }
 
-/* Main Content */
 .main-content {
   flex: 1;
   margin-left: 260px;
   padding: 24px;
+}
+
+.main-content.no-padding {
+  padding: 0;
 }
 
 .content-header {
@@ -557,6 +560,11 @@
     margin-left: 0;
     padding: 16px;
     padding-top: 80px; /* Space for mobile header */
+  }
+
+  .main-content.no-padding {
+    padding: 16px 0 0 0;
+    padding-top: 80px;
   }
 
   .stats-grid {

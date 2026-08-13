@@ -106,7 +106,9 @@
   color: #1e293b;
 }
 
-.search-icon {
+.search-box .search-icon {
+  position: static;
+  transform: none;
   color: #94a3b8;
 }
 
